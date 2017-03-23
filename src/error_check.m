@@ -1,7 +1,8 @@
 %% check.m
 
 % first open the training data to read into a matrix
-train_file = fopen('../results/ctargon-classified-takehome1.txt');
+train_file = fopen('pca-bayesian-classified.txt');
+%train_file = fopen('knn-5-classified.txt');
 
 classified = cell2mat(textscan(train_file, '%f'));
 

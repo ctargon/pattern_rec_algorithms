@@ -15,19 +15,7 @@ clc
 % constants
 TEST_SIZE = 15000;
 
-% first open the training data to read into a matrix
-train_file = fopen('../data/train_sp2017_v19');
-
-training_set = cell2mat(textscan(train_file, '%f %f %f %f'));
-
-fclose(train_file);
-
-% open the test data and save to a matrix
-test_file = fopen('../data/train_sp2017_v19');
-
-test_set = cell2mat(textscan(test_file, '%f %f %f %f'));
-
-fclose(test_file);
+[training_set, test_set] = read_data('../data/train_sp2017_v19','../data/test_sp2017_v19');
 
 % split training data into 3 classes
 c1_tr_set = training_set(1:5000,:);
@@ -45,7 +33,7 @@ mu_c3 = mean(c3_tr_set);
 sigma_c3 = cov(c3_tr_set);
 
 % open file for writing to
-out_file = fopen('train-classified.txt', 'w');
+out_file = fopen('test-bay-classified.txt', 'w');
 
 % preallocate class vector
 class = zeros(TEST_SIZE,1);
